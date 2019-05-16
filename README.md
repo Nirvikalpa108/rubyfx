@@ -1,15 +1,28 @@
-# Coding Challenge
+# FX Calculator
 
-Thank you for your interest in the Coding Challenge.  This template is a barebones guide to get you started.  Please add any gems, folders, files, etc. you see fit in order to produce a solution you're proud of.
+This script obtains and calculates foreign exchange rates using a given source. We have used a JSON file as our source of dates and foreign exchange rates.
 
-## Coding Challenge Instructions
+## Setup 
 
-Please see the INSTRUCTIONS.md file for more information.
+Ensure you have installed [Ruby](https://www.ruby-lang.org/en/downloads/), [Rubygems](https://rubygems.org/pages/download) (a package manager framework for Ruby) and [Bundler](https://bundler.io/) (a Ruby gem management gem).
 
-## Your Solution Setup and Run Instructions
+## Installation 
+1. Install gems: ```bundle install```
 
-Please include instructions on how to setup and run your solution here.
+2. Run tests: ```bundle exec ruby test/run_tests.rb```
 
-## Your Design Decisions
+3. Start a console session: ```bundle exec irb -Ilib```
 
-We'd love to hear your thoughts around any design decisions you made while coding your solution.
+4. Load the template library: ```require 'currency_exchange'```
+
+5. Calculate an exchange rate: ```CurrencyExchange.rate(Date.new(2018, 11, 22), "USD", "GBP")```
+
+## Help
+
+If it's your first time running the interactive Ruby shell (IRB) in your terminal, see this [helpful tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-irb-to-explore-ruby). 
+
+If you run into any problems in the setup or installation of this programme, please raise an issue or if you're not familiar with GitHub, please feel free to reach out on [Twitter](https://twitter.com/a_adewusi). 
+
+Remember, as the late great [Jim Weirich](https://github.com/benlangfeld/ruby-koans/blob/master/README.rdoc) noted, mountains are merely mountains, so don't worry if you get stuck - we are all here to help :heart:
+
+## Design Decisions
