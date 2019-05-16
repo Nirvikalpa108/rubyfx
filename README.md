@@ -7,15 +7,17 @@ This script obtains and calculates foreign exchange rates using a given source. 
 Ensure you have installed [Ruby](https://www.ruby-lang.org/en/downloads/), [Rubygems](https://rubygems.org/pages/download) (a package manager framework for Ruby) and [Bundler](https://bundler.io/) (a Ruby gem management gem).
 
 ## Installation 
-1. Install gems: ```bundle install```
+1. Open your terminal or command prompt.
 
-2. Run tests: ```bundle exec ruby test/run_tests.rb```
+2. Install gems: ```bundle install```
 
-3. Start a console session: ```bundle exec irb -Ilib```
+3. Run tests: ```bundle exec ruby test/run_tests.rb```
 
-4. Load the template library: ```require 'currency_exchange'```
+4. Start a console session: ```bundle exec irb -Ilib```
 
-5. Calculate an exchange rate: ```CurrencyExchange.rate(Date.new(2018, 11, 22), "USD", "GBP")```
+5. Load the template library: ```require 'currency_exchange'```
+
+6. Calculate an exchange rate: ```CurrencyExchange.rate(Date.new(2018, 11, 22), "USD", "GBP")```
 
 ## Help
 
