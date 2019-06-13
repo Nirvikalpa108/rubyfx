@@ -1,7 +1,3 @@
-# These are just suggested definitions to get you started.  Please feel
-# free to make any changes at all as you see fit.
-
-
 # http://test-unit.github.io/
 require 'test/unit'
 require 'currency_exchange'
