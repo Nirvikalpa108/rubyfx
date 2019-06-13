@@ -10,6 +10,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  irb
   test-unit
 
 BUNDLED WITH
