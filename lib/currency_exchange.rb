@@ -11,7 +11,3 @@ module CurrencyExchange
     hash[to_currency] / hash[from_currency]
   end
 end
-
-
-# Raises an exception if unable to calculate requested rate.
-# Raises an exception if there is no rate for the date provided.
