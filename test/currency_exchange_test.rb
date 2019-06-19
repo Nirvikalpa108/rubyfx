@@ -18,12 +18,15 @@ class CurrencyExchangeTest < Test::Unit::TestCase
   end
 
   def test_exception_raised_if_unable_to_calculate_rate
-    correct_response = "Error - unable to calculate rate requested"
-   # assert_equal correct_response, CurrencyExchange.rate(Date.new(2018,11,22), "NGN", "USD")
+  #  assert_raise(CurrencyExchange::CurrencyError.new("Error - unable to calculate rate requested")) do
+  #    CurrencyExchange.rate(Date.new(2018,11,22), "NGN", "USD")
+   # end
   end
 
   def test_exception_raised_if_no_rate_for_date
-    correct_response = "Error - unable to calculate rate requested"
-   # assert_equal correct_response, CurrencyExchange.rate(Date.new(2008,11,22), "GBP", "USD")
+   # assert_raise(CurrencyExchange::DateError.new("Error - unable to calculate rate requested")) do
+   #   CurrencyExchange.rate(Date.new(2008,11,22), "GBP", "USD")
+   # end
   end
 end
+
