@@ -10,14 +10,8 @@ class CurrencyExchange
   end
 
   class RateCalculate
-    attr_accessor :date
-
-    def initialise(date)
-      @date = date
-    end
-
     def convert(date, from_currency, to_currency)
-      hash = nested_hash[date.strftime]
+      hash = parse_file[date.strftime]
       if to_currency == "EUR"
         hash.default = 1
       end
@@ -25,7 +19,7 @@ class CurrencyExchange
     end
 
     private
-    def nested_hash
+    def parse_file
       JSON.parse(File.read(file_name))
     end
 
