@@ -6,11 +6,11 @@ class CurrencyExchange
   FILE_NAME = 'data/eurofxref-hist-90d.json'
 
     def self.rate(date:, from:, to:)
-      hash = fx_dates[date.strftime]
+      fx_rates = fx_dates[date.strftime]
       if to == "EUR"
         hash.default = 1
       end
-      hash[to] / hash[from]
+      fx_rates[to] / fx_rates[from]
     end
 
     def self.fx_dates
