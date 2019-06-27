@@ -7,10 +7,8 @@ class CurrencyExchange
 
     def self.rate(date:, from:, to:)
       fx_rates = fx_dates[date.strftime]
-      if to == "EUR"
-        fx_rates.default = 1
-      end
-      fx_rates[to] / fx_rates[from]
+      numerator = to == "EUR" ? 1 : fx_rates[to]
+      numerator / fx_rates[from]
     end
 
     def self.fx_dates
