@@ -2,25 +2,21 @@ require 'json'
 require 'date'
 
 class CurrencyExchange
-    def self.rate(date, from_currency, to_currency)
+
+  FILE_NAME = 'data/eurofxref-hist-90d.json'
+
+    def self.rate(date:, from:, to:)
       hash = parse_file[date.strftime]
-      if to_currency == "EUR"
+      if to == "EUR"
         hash.default = 1
       end
-      hash[to_currency] / hash[from_currency]
+      hash[to] / hash[from]
     end
 
     def self.parse_file
-      JSON.parse(File.read(file_name))
-    end
-
-    def self.file_name
-      'data/eurofxref-hist-90d.json'
+      JSON.parse(File.read(FILE_NAME))
     end
 end
 
-class CurrencyError < StandardError
-end
-
-class DateError < StandardError
-end
+class CurrencyError < StandardError; end
+class DateError < StandardError; end
