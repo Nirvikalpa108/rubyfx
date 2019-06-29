@@ -4,12 +4,27 @@ require 'date'
 class CurrencyExchange
 
   FILE_NAME = 'data/eurofxref-hist-90d.json'
+  BASE_RATE = 'EUR'
 
     def self.rate(date:, from:, to:)
-      fx_rates = fx_dates.fetch(date.strftime) { raise DateError }
-      from_rate = fx_rates.fetch(from) { raise CurrencyError }
-      numerator = to == "EUR" ? 1 : fx_rates.fetch(to) { raise CurrencyError }
-      numerator / from_rate
+      to_currency(date, to) / from_currency(date, from)
+    end
+
+    private
+    def self.to_currency(date, to)
+      if to == BASE_RATE
+        return 1
+      else
+        date_convert(date).fetch(to) { raise CurrencyError }
+      end
+    end
+  
+    def self.from_currency(date, from)
+      date_convert(date).fetch(from) { raise CurrencyError }
+    end
+
+    def self.date_convert(date)
+      fx_dates.fetch(date.strftime) { raise DateError }
     end
 
     def self.fx_dates
