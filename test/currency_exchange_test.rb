@@ -34,5 +34,11 @@ class CurrencyExchangeTest < Test::Unit::TestCase
       CurrencyExchange.rate(date: Date.new(2008,11,22), from: "GBP", to: "USD")
    end
   end
+
+  def test_exception_raised_for_non_JSON_or_CSV_file_types
+    assert_raise(FileError.new("Error - file type unaccepted")) do
+      ParseFile.type_check(file_name)
+    end
+  end
 end
 
