@@ -30,10 +30,10 @@ Remember, as the late great [Jim Weirich](https://github.com/benlangfeld/ruby-ko
 
 We've used [**Keyword arguments**](https://thoughtbot.com/blog/ruby-2-keyword-arguments) to make it easier for users to enter their own method arguments as well as read method calls. This seems particularly pertinent given we use two currency rates and the position of them in a **Positional Argument** structure could easily be confusing. 
 
-This script requires a File containing FX rates and dates. We have made this File a [**constant**](https://www.rubyguides.com/2017/07/ruby-constants/) in our script, so this can easily be changed by the user.
+We have implemented two exception cases that currently have tests checking the generated error messages if a currency or date requested is not found in the given file.
 
 ## Progressive Enhancements 
 
-We are working on a feature which will make it easy for users to amend the **File type**. Currently this script uses a JSON file, but we would like to accept other types, such as logs for example. 
+We are working on a feature which will make it easy for users to amend the **File type**. Currently this script uses a JSON file, but we would like to accept CSV and raise an error if a non-JSON or CSV file is used. 
 
-We would like to implement the two exception cases that currently have tests checking the generated error messages if a currency or date requested is not found in the given file.
+This script requires a File containing FX rates and dates. We have made this File a [**constant**](https://www.rubyguides.com/2017/07/ruby-constants/) in our script, but we intend that this can easily be changed by the user in the future.
