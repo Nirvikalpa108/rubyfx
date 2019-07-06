@@ -43,3 +43,9 @@ class DateError < StandardError
   "Error - no rate at date found"
   end
 end
+
+class ParseFile
+  def type_check(file)
+  file == 'data/eurofxref-hist-90d.csv'
+  end
+end
