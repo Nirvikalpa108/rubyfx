@@ -19,7 +19,7 @@ Ensure you have installed [Ruby](https://www.ruby-lang.org/en/downloads/), [Ruby
 
 1. Load the template library: ```require 'currency_exchange'```
 
-1. Calculate an exchange rate: ```CurrencyExchange.rate(Date.new(2018, 11, 22), "USD", "GBP")```
+1. Calculate an exchange rate: ```CurrencyExchange.rate(date: Date.new(2018,11,22), from: "GBP", to: "USD", file: 'data/eurofxref-hist-90d.json')```
 
 ## Help
 If you run into any problems in the setup or installation of this programme, please raise an issue or if you're not familiar with GitHub, please feel free to reach out on [Twitter](https://twitter.com/a_adewusi). 
