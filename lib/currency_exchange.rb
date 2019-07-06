@@ -7,8 +7,7 @@ class CurrencyExchange
   BASE_RATE = 'EUR'
 
     def self.rate(date:, from:, to:, fx_filepath:)
-      fx_filepath
-      to_currency(date, to) / from_currency(date, from)
+      to_currency(fx_filepath, date, to) / from_currency(fx_filepath, date, from)
     end
 
     private
@@ -21,20 +20,20 @@ class CurrencyExchange
       end
     end
 
-    def self.date_convert(date)
-      fx_dates.fetch(date.strftime) { raise DateError }
+    def self.date_convert(fx_filepath, date)
+      fx_dates(fx_filepath).fetch(date.strftime) { raise DateError }
     end
 
-    def self.to_currency(date, to)
+    def self.to_currency(fx_filepath, date, to)
       if to == BASE_RATE
         return 1
       else
-        date_convert(date).fetch(to) { raise CurrencyError }
+        date_convert(fx_filepath, date).fetch(to) { raise CurrencyError }
       end
     end
 
-    def self.from_currency(date, from)
-      date_convert(date).fetch(from) { raise CurrencyError }
+    def self.from_currency(fx_filepath, date, from)
+      date_convert(fx_filepath, date).fetch(from) { raise CurrencyError }
     end
 end
 
