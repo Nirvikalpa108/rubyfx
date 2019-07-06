@@ -1,18 +1,24 @@
 require 'json'
+require 'csv'
 require 'date'
 
 class CurrencyExchange
 
-  FILE_NAME = 'data/eurofxref-hist-90d.json'
   BASE_RATE = 'EUR'
 
-    def self.rate(date:, from:, to:)
+    def self.rate(date:, from:, to:, fx_filepath:)
+      fx_filepath
       to_currency(date, to) / from_currency(date, from)
     end
 
     private
-    def self.fx_dates
-      JSON.parse(File.read(FILE_NAME))
+    def self.fx_dates(fx_filepath)
+      if File.extname(fx_filepath) == ".json"
+        JSON.parse(File.read(fx_filepath))
+      elsif File.extname(fx_filepath) == ".csv"
+        CSV.parse(File.read(fx_filepath))
+        else raise FileError
+      end
     end
 
     def self.date_convert(date)
@@ -44,8 +50,8 @@ class DateError < StandardError
   end
 end
 
-class ParseFile
-  def type_check(file)
-  file == 'data/eurofxref-hist-90d.csv'
+class FileError < StandardError
+  def message
+    "Error - this file type is not accepted. Try JSON or CSV."
   end
 end
