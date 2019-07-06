@@ -6,34 +6,34 @@ class CurrencyExchange
 
   BASE_RATE = 'EUR'
 
-    def self.rate(date:, from:, to:, fx_filepath:)
-      to_currency(fx_filepath, date, to) / from_currency(fx_filepath, date, from)
+    def self.rate(date:, from:, to:, file:)
+      to_currency(file, date, to) / from_currency(file, date, from)
     end
 
     private
-    def self.fx_dates(fx_filepath)
-      if File.extname(fx_filepath) == ".json"
-        JSON.parse(File.read(fx_filepath))
-      elsif File.extname(fx_filepath) == ".csv"
-        CSV.parse(File.read(fx_filepath))
+    def self.fx_dates(file)
+      if File.extname(file) == ".json"
+        JSON.parse(File.read(file))
+      elsif File.extname(file) == ".csv"
+        CSV.parse(File.read(file))
         else raise FileError
       end
     end
 
-    def self.date_convert(fx_filepath, date)
-      fx_dates(fx_filepath).fetch(date.strftime) { raise DateError }
+    def self.date_convert(file, date)
+      fx_dates(file).fetch(date.strftime) { raise DateError }
     end
 
-    def self.to_currency(fx_filepath, date, to)
+    def self.to_currency(file, date, to)
       if to == BASE_RATE
         return 1
       else
-        date_convert(fx_filepath, date).fetch(to) { raise CurrencyError }
+        date_convert(file, date).fetch(to) { raise CurrencyError }
       end
     end
 
-    def self.from_currency(fx_filepath, date, from)
-      date_convert(fx_filepath, date).fetch(from) { raise CurrencyError }
+    def self.from_currency(file, date, from)
+      date_convert(file, date).fetch(from) { raise CurrencyError }
     end
 end
 
