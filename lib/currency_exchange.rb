@@ -15,7 +15,10 @@ class CurrencyExchange
       if File.extname(file) == ".json"
         JSON.parse(File.read(file))
       elsif File.extname(file) == ".csv"
-        CSV.parse(File.read(file))
+        CSV.parse(File.read(file), headers:true, converters: :numeric)
+        # headers:true, outputs CSV Table object
+        # converters: :numeric, converts strings to numbers
+        # https://www.rubyguides.com/2018/10/parse-csv-ruby/
         else raise FileError
       end
     end
