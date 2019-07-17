@@ -17,7 +17,7 @@ Ensure you have installed [Ruby](https://www.ruby-lang.org/en/downloads/), [Ruby
 
 1. Start a console session (if it's your first time, see this [helpful tutorial](https://www.digitalocean.com/community/tutorials/how-to-use-irb-to-explore-ruby)): ```bundle exec irb -Ilib```
 
-1. Load the template library: ```require 'currency_exchange'```
+1. Load the template library: ```require './lib/currency_exchange'```
 
 1. Calculate an exchange rate: ```CurrencyExchange.rate(date: Date.new(2018,11,22), from: "GBP", to: "USD", file: 'data/eurofxref-hist-90d.json')```
 
