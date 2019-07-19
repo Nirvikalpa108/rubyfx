@@ -1,43 +1,34 @@
 require 'json'
-require 'csv'
 require 'date'
 
 class CurrencyExchange
 
   BASE_RATE = 'EUR'
 
-    def self.rate(date:, from:, to:, file:)
-      to_currency(file, date, to) / from_currency(file, date, from)
-    end
+  def self.rate(date:, from:, to:, file:)
+    to_currency(file, date, to) / from_currency(file, date, from)
+  end
 
-    private
-    def self.fx_dates(file)
-      if File.extname(file) == ".json"
-        JSON.parse(File.read(file))
-      elsif File.extname(file) == ".csv"
-        CSV.parse(File.read(file), headers:true, converters: :numeric)
-        # headers:true, outputs CSV Table object
-        # converters: :numeric, converts strings to numbers
-        # https://www.rubyguides.com/2018/10/parse-csv-ruby/
-        else raise FileError
-      end
-    end
+  private
+  def self.fx_dates(file)
+      JSON.parse(File.read(file))
+  end
 
-    def self.date_convert(file, date)
-      fx_dates(file).fetch(date.strftime) { raise DateError }
-    end
+  def self.date_convert(file, date)
+    fx_dates(file).fetch(date.strftime) { raise DateError }
+  end
 
-    def self.to_currency(file, date, to)
-      if to == BASE_RATE
-        return 1
-      else
-        date_convert(file, date).fetch(to) { raise CurrencyError }
-      end
+  def self.to_currency(file, date, to)
+    if to == BASE_RATE
+      return 1
+    else
+      date_convert(file, date).fetch(to) { raise CurrencyError }
     end
+  end
 
-    def self.from_currency(file, date, from)
-      date_convert(file, date).fetch(from) { raise CurrencyError }
-    end
+  def self.from_currency(file, date, from)
+    date_convert(file, date).fetch(from) { raise CurrencyError }
+  end
 end
 
 class CurrencyError < StandardError
@@ -52,8 +43,4 @@ class DateError < StandardError
   end
 end
 
-class FileError < StandardError
-  def message
-    "Error - this file type is not accepted. Try JSON or CSV."
-  end
-end
+
