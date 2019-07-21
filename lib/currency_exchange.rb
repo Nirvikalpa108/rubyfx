@@ -1,3 +1,4 @@
+require_relative 'json_lookup'
 require 'json'
 require 'csv'
 require 'date'
@@ -6,11 +7,29 @@ class CurrencyExchange
 
   BASE_RATE = 'EUR'
 
-    def self.rate(date:, from:, to:, file:)
-      to_currency(file, date, to) / from_currency(file, date, from)
+  def initialize(file:, date:, from:, to:)
+    @file = file
+    @date = date
+    @from = from
+    @to = to
+  end
+
+    def rate
+      lookup = find_lookup
+      lookup.to_currency / lookup.from_currency
     end
 
     private
+  def find_lookup
+    case File.extname(@file)
+    when ".json"
+      JsonLookup.new(@file, @date, @from, @to)
+    when ".csv"
+      CsvLookup.new(@file, @date, @from, @to)
+    else raise FileError
+    end
+  end
+
     def self.fx_dates(file)
       if File.extname(file) == ".json"
         JSON.parse(File.read(file))
