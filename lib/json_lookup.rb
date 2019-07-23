@@ -10,11 +10,11 @@ class JsonLookup
   end
 
   def to_currency
-    date_format(file, date).fetch(to) { raise CurrencyError }
+    date_format(@file, @date).fetch(@to) { raise CurrencyError }
   end
 
   def from_currency
-    date_format(file, date).fetch(from) { raise CurrencyError }
+    date_format(@file, @date).fetch(@from) { raise CurrencyError }
   end
 
   private
