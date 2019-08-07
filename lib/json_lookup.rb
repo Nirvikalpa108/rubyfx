@@ -1,6 +1,5 @@
-# require_relative 'error'
-# put error classes in separate files
-#
+require_relative 'error'
+
 class JsonLookup
   def initialize(file, date, from, to)
     @file = file
