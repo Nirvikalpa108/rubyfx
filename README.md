@@ -1,6 +1,6 @@
 # FX Calculator
 
-This script obtains and calculates foreign exchange rates using a given source. We have used a JSON file as our source of dates and foreign exchange rates.
+This script obtains and calculates foreign exchange rates using a given JSON or CSV file. 
 
 ## Setup 
 
@@ -29,7 +29,3 @@ Remember, as the late great [Jim Weirich](https://github.com/benlangfeld/ruby-ko
 ## Design Decisions
 
 We have implemented two exception cases that currently have tests checking the generated error messages if a currency or date requested is not found in the given file.
-
-## Progressive Enhancements 
-
-We are working on a feature which will make it easy for users to amend the **File type**. Currently this script uses a JSON file, but we would like to accept CSV and raise an error if a non-JSON or CSV file is used. 
