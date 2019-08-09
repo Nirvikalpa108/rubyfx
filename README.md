@@ -28,4 +28,4 @@ Remember, as the late great [Jim Weirich](https://github.com/benlangfeld/ruby-ko
 
 ## Design Decisions
 
-We have implemented two exception cases that currently have tests checking the generated error messages if a currency or date requested is not found in the given file.
+We have implemented three exception cases. If a currency, date or file requested is not found, an error is generated.
