@@ -40,11 +40,11 @@ class CurrencyExchangeTest < Test::Unit::TestCase
     correct_rate = 1.2870493690602498
     assert_equal correct_rate, CurrencyExchange.new(date: Date.new(2018,11,22), from: "GBP", to: "USD", file: 'data/eurofxref-hist-90d.csv').rate
   end
-=begin
+
   def test_exception_raised_for_non_JSON_and_CSV_file_types
     assert_raise(FileError.new("Error - this file type is not accepted. Try JSON or CSV.")) do
       CurrencyExchange.rate(date: Date.new(2018,11,22), from: "GBP", to: "USD", file: 'data/eurofxref-hist-90d.xml')
     end
   end
-=end
 end
+
