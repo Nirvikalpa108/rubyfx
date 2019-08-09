@@ -1,4 +1,8 @@
 require_relative 'error'
+require 'json'
+require 'date'
+
+BASE_RATE = 'EUR'
 
 class JsonLookup
   def initialize(file, date, from, to)
@@ -9,7 +13,11 @@ class JsonLookup
   end
 
   def to_currency
+    if @to == BASE_RATE
+      return 1
+    else
     date_format(@file, @date).fetch(@to) { raise CurrencyError }
+    end
   end
 
   def from_currency
