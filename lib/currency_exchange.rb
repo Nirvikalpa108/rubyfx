@@ -2,6 +2,8 @@ require_relative 'json_lookup'
 require_relative 'csv_lookup'
 require_relative 'error'
 
+BASE_RATE = 'EUR'
+
 class CurrencyExchange
 
   def initialize(file:, date:, from:, to:)

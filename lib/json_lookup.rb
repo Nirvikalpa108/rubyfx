@@ -2,8 +2,6 @@ require_relative 'error'
 require 'json'
 require 'date'
 
-BASE_RATE = 'EUR'
-
 class JsonLookup
   def initialize(file, date, from, to)
     @file = file
